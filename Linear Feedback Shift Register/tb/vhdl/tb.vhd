@@ -18,8 +18,7 @@ architecture behavior of lfsr_tb is
 
 begin
 
-    dut: lfsr port map
-            (clk => clk, reset => reset, Q => Q);
+    dut: lfsr port map (clk => clk, reset => reset, Q => Q);
 
     clk   <= not clk after 10 ns;
     reset <= '1', '0' after 100 ns;
