@@ -3,8 +3,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity top is
-    Generic (LFSR_WIDTH : natural := 15;
-             HEX_WIDTH  : natural := 4);
+    Generic (LFSR_WIDTH : natural := 16;
+             HEX_WIDTH  : natural := 4;
+             SLOW_CLK   : natural := 23;
+             MED_CLK    : natural := 17);
     Port    (reset, clk   : in  STD_LOGIC;
              anode_7seg   : out STD_LOGIC_VECTOR(3 downto 0);
              cathode_7seg : out STD_LOGIC_VECTOR(7 downto 0));
@@ -42,21 +44,21 @@ architecture behavioral of top is
           D_OUT : out STD_LOGIC_VECTOR (7 downto 0));
     end component;
     
-    signal slow_counter  : std_logic_vector(22 downto 0);
-    signal med_counter   : std_logic_vector(16 downto 0);
+    signal slow_counter  : std_logic_vector(SLOW_CLK-1 downto 0);
+    signal med_counter   : std_logic_vector(MED_CLK-1 downto 0);
     
     signal slow_clk : std_logic;
     signal med_clk  : std_logic;
 
     signal S : std_logic_vector(1 downto 0);
-    signal hex_nibble : std_logic_vector(3 downto 0);
+    signal hex_nibble : std_logic_vector(HEX_WIDTH-1 downto 0);
 
-    signal lfsr_out     : std_logic_vector(LFSR_WIDTH downto 0);
-    signal lfsr_out0    : std_logic_vector(HEX_WIDTH downto 0);
-    signal lfsr_out1    : std_logic_vector(HEX_WIDTH downto 0);
-    signal lfsr_out2    : std_logic_vector(HEX_WIDTH downto 0);
-    signal lfsr_out3    : std_logic_vector(HEX_WIDTH downto 0);
-    signal lfsr_out_cur : std_logic_vector(HEX_WIDTH downto 0);
+    signal lfsr_out     : std_logic_vector(LFSR_WIDTH-1 downto 0);
+    signal lfsr_out0    : std_logic_vector(HEX_WIDTH-1 downto 0);
+    signal lfsr_out1    : std_logic_vector(HEX_WIDTH-1 downto 0);
+    signal lfsr_out2    : std_logic_vector(HEX_WIDTH-1 downto 0);
+    signal lfsr_out3    : std_logic_vector(HEX_WIDTH-1 downto 0);
+    signal lfsr_out_cur : std_logic_vector(HEX_WIDTH-1 downto 0);
 
 begin
 
@@ -84,8 +86,8 @@ begin
         end if;
     end process;
 
-    slow_clk <= slow_counter(22);
-    med_clk  <= med_counter(16);
+    slow_clk <= slow_counter(SLOW_CLK-1);
+    med_clk  <= med_counter(MED_CLK-1);
 
     -- Assign LFSR output nibbles to discrete signals
     lfsr_out3 <= lfsr_out(15 downto 12);
