@@ -22,6 +22,6 @@ begin
         end if;
     end process;
 
-    C <= value;
+    C <= cnt;
 
 end architecture rtl;
