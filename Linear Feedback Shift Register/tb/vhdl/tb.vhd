@@ -8,7 +8,7 @@ architecture behavior of lfsr_tb is
 
     component top
     Port(clk, reset   : IN std_logic;
-         anode_7seg   : OUT std_logic;
+         anode_7seg   : OUT std_logic_vector(3 downto 0);
          cathode_7seg : OUT std_logic_vector(7 downto 0));
     end component;
 
