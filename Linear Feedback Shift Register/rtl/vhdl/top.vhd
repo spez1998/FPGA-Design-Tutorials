@@ -32,8 +32,8 @@ architecture behavioral of top is
     end component;
 
     component dec_l
-        port(S : in STD_LOGIC_VECTOR (1 downto 0);
-             Y: STD_LOGIC_VECTOR (3 downto 0));
+        port(S : in  STD_LOGIC_VECTOR (1 downto 0);
+             Y : out STD_LOGIC_VECTOR (3 downto 0));
     end component;
 
     component dec_7seg
