@@ -57,8 +57,6 @@ architecture behavioral of top is
     signal lfsr_out3    : std_logic_vector(HEX_WIDTH downto 0);
     signal lfsr_out_cur : std_logic_vector(HEX_WIDTH downto 0);
 
-    signal 
-
 begin
 
     unit: lfsr port map (CLK => slow_clk, RESET => reset, Q => lfsr_out);
