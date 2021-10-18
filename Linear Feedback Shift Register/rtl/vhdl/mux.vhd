@@ -30,14 +30,3 @@ begin
     end process;
 
 end architecture behav;
-
-architecture struct of mux is
-
-begin
-
-    Y <= (D0 and not S(1) and not S(0)) or
-         (D1 and not S(1) and not S(0)) or
-         (D2 and not S(1) and not S(0)) or
-         (D3 and not S(1) and not S(0));
-
-end architecture struct;
