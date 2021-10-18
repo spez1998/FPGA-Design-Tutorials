@@ -17,7 +17,7 @@ begin
 
     process(CLK, RST) begin
         if(RST = '1') then
-            cnt <= "0000";
+            cnt <= "00";
         elsif(CLK'event and CLK='1') then
             cnt <= cnt + 1;
         end if;
