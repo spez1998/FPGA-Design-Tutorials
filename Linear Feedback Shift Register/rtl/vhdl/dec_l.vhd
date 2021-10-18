@@ -12,7 +12,7 @@ architecture behav of dec_l is
 
 begin
 
-    process(S, Y) begin
+    process(S) begin
         if(S = "00") then
             Y <= "1110";
         elsif(S = "01") then
