@@ -14,7 +14,7 @@ architecture behavior of lfsr_tb is
 
     signal clk          : std_logic := '0';
     signal reset        : std_logic := '0';
-    signal anode_7seg   : std_logic := '0';
+    signal anode_7seg   : std_logic_vector(3 downto 0);
     signal cathode_7seg : std_logic_vector(7 downto 0);
 
 begin
