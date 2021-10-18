@@ -3,8 +3,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity top is
-    Generic (LFSR_WIDTH : positive := 15;
-             HEX_WIDTH  : positive := 4);
+    Generic (LFSR_WIDTH : natural := 15;
+             HEX_WIDTH  : natural := 4);
     Port    (reset, clk   : in  STD_LOGIC;
              anode_7seg   : out STD_LOGIC;
              cathode_7seg : out STD_LOGIC_VECTOR(7 downto 0));
@@ -13,7 +13,8 @@ end top;
 architecture behavioral of top is
 
     component lfsr
-        port(CLK, RESET : in  std_logic);
+        port(CLK, RESET : in  std_logic;
+             Q          : out std_logic_vector(LFSR_WIDTH-1 downto 0);
     end component;
 
     component counter
@@ -32,7 +33,7 @@ architecture behavioral of top is
     end component;
 
     component dec_l
-        port(S : in  STD_LOGIC_VECTOR (1 downto 0);
+        port(S : in STD_LOGIC_VECTOR (1 downto 0);
              Y : out STD_LOGIC_VECTOR (3 downto 0));
     end component;
 
