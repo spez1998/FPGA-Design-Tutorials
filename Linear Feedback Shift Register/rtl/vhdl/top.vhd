@@ -6,7 +6,7 @@ entity top is
     Generic (LFSR_WIDTH : natural := 15;
              HEX_WIDTH  : natural := 4);
     Port    (reset, clk   : in  STD_LOGIC;
-             anode_7seg   : out STD_LOGIC;
+             anode_7seg   : out STD_LOGIC_VECTOR(3 downto 0);
              cathode_7seg : out STD_LOGIC_VECTOR(7 downto 0));
 end top;
 
