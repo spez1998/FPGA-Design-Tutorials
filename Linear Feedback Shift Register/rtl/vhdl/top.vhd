@@ -83,8 +83,8 @@ begin
         end if;
     end process;
 
-    slow_clk <= slow_counter(22)
-    med_clk  <= med_counter(16)
+    slow_clk <= slow_counter(22);
+    med_clk  <= med_counter(16);
 
     -- Assign LFSR output nibbles to discrete signals
     lfsr_out3 <= lfsr_out(15 downto 12);
