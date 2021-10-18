@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity mux is
-    generic (WIDTH : 4);
+    generic (WIDTH : natural:= 4);
     port    (D0 : in  STD_LOGIC_VECTOR (WIDTH-1 downto 0);
              D1 : in  STD_LOGIC_VECTOR (WIDTH-1 downto 0);
              D2 : in  STD_LOGIC_VECTOR (WIDTH-1 downto 0);

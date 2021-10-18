@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity counter is
-    generic (WIDTH : 2);
+    generic (WIDTH : natural:= 2);
     port    (CLK, RST : in  STD_LOGIC;
              C        : out STD_LOGIC_VECTOR (WIDTH-1 downto 0)
     );

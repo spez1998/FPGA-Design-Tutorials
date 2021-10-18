@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity lfsr is
-    Generic (WIDTH : 16);
+    Generic (WIDTH : natural:= 16);
     Port    (CLK   : in STD_LOGIC;
              RESET : in STD_LOGIC;
              Q     : out STD_LOGIC_VECTOR (WIDTH-1 downto 0)
