@@ -14,7 +14,7 @@ architecture behavioral of top is
 
     component lfsr
         port(CLK, RESET : in  std_logic;
-             Q          : out std_logic_vector(LFSR_WIDTH-1 downto 0);
+             Q          : out std_logic_vector(LFSR_WIDTH-1 downto 0));
     end component;
 
     component counter
@@ -28,8 +28,7 @@ architecture behavioral of top is
              D2 : in  STD_LOGIC_VECTOR (HEX_WIDTH-1 downto 0);
              D3 : in  STD_LOGIC_VECTOR (HEX_WIDTH-1 downto 0);
              S  : in  STD_LOGIC_VECTOR (1 downto 0);
-             Y  : out STD_LOGIC_VECTOR (HEX_WIDTH-1 downto 0)
-    );
+             Y  : out STD_LOGIC_VECTOR (HEX_WIDTH-1 downto 0));
     end component;
 
     component dec_l
@@ -60,11 +59,11 @@ architecture behavioral of top is
 
 begin
 
-    unit: lfsr port map (CLK => slow_clk, RESET => reset, Q => lfsr_out);
-    unit: counter port map (CLK => med_clk, RST => reset, C => S);
-    unit: dec_l port map (S => S, Y => anode_7seg);
-    unit: dec_7seg port map (D_IN => lfsr_out_cur, D_OUT => cathode_7seg);
-    unit: mux port map (D0 => lfsr_out0,
+    unit1: lfsr     port map (CLK => slow_clk, RESET => reset, Q => lfsr_out);
+    unit2: counter  port map (CLK => med_clk, RST => reset, C => S);
+    unit3: dec_l    port map (S => S, Y => anode_7seg);
+    unit4: dec_7seg port map (D_IN => lfsr_out_cur, D_OUT => cathode_7seg);
+    unit5: mux      port map (D0 => lfsr_out0,
                         D1 => lfsr_out1,
                         D2 => lfsr_out2,
                         D3 => lfsr_out3,
