@@ -14,7 +14,7 @@ begin
     -- D_OUT[8:0] corresponds to C[A, B, C, ..., G], DP.
     process(D_IN) begin
         case D_IN is
-            when "0000" => D_OUT <= "11111101";
+            when "0000" => D_OUT <= "00000001";
             when "0001" => D_OUT <= "10011111";
             when "0010" => D_OUT <= "00100101";
             when "0011" => D_OUT <= "00001101";
