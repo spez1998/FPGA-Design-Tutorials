@@ -6,7 +6,7 @@ entity top is
     Generic (LFSR_WIDTH : natural := 16;
              HEX_WIDTH  : natural := 4);
     Port    (reset, clk   : in  STD_LOGIC;
-             anode_7seg   : out STD_LOGIC_VECTOR(3 downto 0);
+             anode_7seg   : out STD_LOGIC_VECTOR(7 downto 0);
              cathode_7seg : out STD_LOGIC_VECTOR(7 downto 0));
 end top;
 
@@ -33,7 +33,7 @@ architecture behavioral of top is
 
     component dec_l
         port(S : in STD_LOGIC_VECTOR (1 downto 0);
-             Y : out STD_LOGIC_VECTOR (3 downto 0));
+             Y : out STD_LOGIC_VECTOR (7 downto 0));
     end component;
 
     component dec_7seg
@@ -41,8 +41,8 @@ architecture behavioral of top is
           D_OUT : out STD_LOGIC_VECTOR (7 downto 0));
     end component;
     
-    signal slow_counter  : std_logic_vector(22 downto 0);
-    signal med_counter   : std_logic_vector(16 downto 0);
+    signal slow_counter  : std_logic_vector(25 downto 0);
+    signal med_counter   : std_logic_vector(17 downto 0);
     
     signal slow_clk : std_logic;
     signal med_clk  : std_logic;
@@ -70,8 +70,8 @@ begin
                               S => S,
                               Y => lfsr_out_cur);
 
-    -- 50MHz clock divided by 2^23 gives ~6Hz slow clock
-    -- 50MHz clock divided by 2^17 gives ~380Hz med clock
+    -- 1000MHz clock divided by 2^26 gives ~1.5Hz slow clock
+    -- 100MHz clock divided by 2^18 gives ~380Hz med clock
     process(clk, reset)
     begin
         if reset = '1' then
@@ -83,8 +83,8 @@ begin
         end if;
     end process;
 
-    slow_clk <= slow_counter(22);
-    med_clk  <= med_counter(16);
+    slow_clk <= slow_counter(25);
+    med_clk  <= med_counter(17);
 
     -- Assign LFSR output nibbles to discrete signals
     lfsr_out3 <= lfsr_out(15 downto 12);
