@@ -18,7 +18,7 @@ begin
         if RESET = '1' then
             QI <= (0 => '1', others => '0');
         elsif rising_edge(CLK) then
-            QI <= (QI(12) xor QI(13) xor QI(1) xor QI(0)) & QI(15 downto 1);
+            QI <= (QI(12) xor QI(3) xor QI(1) xor QI(0)) & QI(15 downto 1);
         end if;
     end process;
 
