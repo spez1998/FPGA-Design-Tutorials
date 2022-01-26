@@ -64,11 +64,11 @@ begin
     unit3: dec_l    port map (S => S, Y => anode_7seg);
     unit4: dec_7seg port map (D_IN => lfsr_out_cur, D_OUT => cathode_7seg);
     unit5: mux      port map (D0 => lfsr_out0,
-                        D1 => lfsr_out1,
-                        D2 => lfsr_out2,
-                        D3 => lfsr_out3,
-                        S => S,
-                        Y => lfsr_out_cur);
+                              D1 => lfsr_out1,
+                              D2 => lfsr_out2,
+                              D3 => lfsr_out3,
+                              S => S,
+                              Y => lfsr_out_cur);
 
     -- 50MHz clock divided by 2^23 gives ~6Hz slow clock
     -- 50MHz clock divided by 2^17 gives ~380Hz med clock
